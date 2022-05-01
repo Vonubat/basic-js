@@ -20,9 +20,17 @@ class DepthCalculator {
     }
     depthCount++;
 
-    const depthArray = new Array(arr.length || 1);
+    const depthArray = [];
+    if (!arr.length) {
+      depthArray.length = 1;
+    } else {
+      depthArray.length = arr.length;
+    }
+
     depthArray.fill(depthCount);
+
     console.log(depthArray);
+
     arr.forEach((element, index) => {
       if (Array.isArray(element)) {
         depthArray[index] = this.calculateDepth(element, depthCount);
